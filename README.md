@@ -71,8 +71,8 @@ model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto")
 
 ### Installation
 ```bash
-git clone https://github.com/your_username/your_repo_name.git
-cd your_repo_name
+git clone https://github.com/White2360/vocab-scaling-low-resource.git
+cd vocab-scaling-low-resource
 pip install -r requirements.txt
 ```
 
@@ -93,7 +93,7 @@ If you find our work or models useful, please cite our paper:
 ```bibtex
 @inproceedings{vocab-scaling-acl2026,
   title={Scaling Laws or Threshold Effects: Exploring the Optimal Vocabulary Size for Balancing Performance and Efficiency in Low-Resource Languages},
-  author={Your Name and Your Colleagues},
+  author={Ao Han,An Dong Chen,Sun yuan,Xiao Bing Zhao},
   booktitle={Findings of the Association for Computational Linguistics: ACL 2026},
   year={2026}
 }
