@@ -12,18 +12,59 @@ We systematically investigate vocabulary scaling for three non-Latin-script, low
 1.  **The BBPE Threshold Effect**: We identify a critical initiation threshold of **~9,000 total tokens** (3,000 per language). Below this, performance actually degrades due to representation instability.
 2.  **Pareto-Optimal Configuration**: Through Pareto Frontier Analysis, we pinpoint **79,500 tokens** as the universal "sweet spot" for BBPE, reducing continual pre-training duration by **>71%** while enhancing performance.
 3.  **Efficiency Paradox**: We reveal how oversized vocabularies can lead to an "efficiency backlash" in generative tasks due to embedding/Softmax layer overhead.
+![Overview](images/instruction.png)
+---
+
+## 🚀 Model Zoo (Comprehensive Collection)
+
+We have released all model checkpoints on **ModelScope**, covering different scaling levels (L1–L10), architectures, and training stages. 
+
+### 🔗 [Click here to access the Full Model Collection](https://www.modelscope.cn/collections/lingfeng2360/ACL-2026-Findings-Vocab-Scaling)
+
+### 📂 Collection Structure & Naming Convention
+The collection includes over **100+ checkpoints**. To find the specific model you need, please refer to the following naming pattern:
+`{Architecture}-{Scale}-{Stage}-{Task}`
+
+1.  **Architectures**: 
+    * `Qwen3-8B`, `Qwen2.5-7B`, `Qwen2.5-1.5B` (BBPE-based)
+    * `Llama2-7B` (BPE-based)
+2.  **Vocabulary Scales**: 
+    * `L1` (140 tokens) to `L10` (195,000 tokens). 
+    * We highly recommend the **optimal 79.5k (L7)** configuration for BBPE models.
+3.  **Stages & Tasks**:
+    * **`IP`**: Incremental Pre-training (Backbones with expanded vocabulary).
+    * **`SFT`**: Supervised Fine-tuning models.
+    * **Tasks (for SFT)**: `MT` (Machine Translation), `TS` (Summarization), `TC` (Classification).
+
+**Example**: `Qwen3-8B-79.5k-SFT-MT` refers to the Qwen3-8B model with a 79.5k vocabulary, fine-tuned for Machine Translation.
 
 ---
 
-## 🚀 Model Zoo
-We have released the complete set of models across different scaling levels (L1 to L10) and architectures (Qwen2.5, Qwen3, Llama 2) on ModelScope.
+### 📊 Model Series Overview
 
-| Model Series | Parameters | Tokenizer | Link |
+| Model Type | Stages Available | Scaling Levels | Targeted Languages |
 | :--- | :--- | :--- | :--- |
-| **Qwen3-Vocab-Scaling** | 8B | BBPE | [Download](https://www.modelscope.cn/collections/lingfeng2360/ACL-2026-Findings-Vocab-Scaling) |
-| **Qwen2.5-Vocab-Scaling** | 1.5B / 7B | BBPE | [Download](https://www.modelscope.cn/collections/lingfeng2360/ACL-2026-Findings-Vocab-Scaling) |
-| **Llama2-Vocab-Scaling** | 7B | BPE | [Download](https://www.modelscope.cn/collections/lingfeng2360/ACL-2026-Findings-Vocab-Scaling) |
+| **Qwen3-8B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
+| **Qwen2.5-7B/1.5B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
+| **Llama2-7B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
 
+---
+
+## 🛠️ Usage Example
+
+You can easily load any model from the collection using the `modelscope` library. For example, to load the Pareto-optimal backbone:
+
+```python
+from modelscope import snapshot_download
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Replace the model ID with the one you selected from the collection
+model_id = 'lingfeng2360/Qwen3-8B-79.5k-IP' 
+model_dir = snapshot_download(model_id)
+
+tokenizer = AutoTokenizer.from_pretrained(model_dir)
+model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto")
+```
 ---
 
 ## 🛠️ Usage
@@ -33,23 +74,6 @@ We have released the complete set of models across different scaling levels (L1 
 git clone https://github.com/your_username/your_repo_name.git
 cd your_repo_name
 pip install -r requirements.txt
-```
-
-### Quick Start (Inference)
-You can load our optimal 79.5k configuration models directly via ModelScope or Transformers:
-
-```python
-from modelscope import snapshot_download
-from transformers import AutoModelForCausalLM, AutoTokenizer
-
-# Download model from ModelScope
-model_dir = snapshot_download('lingfeng2360/Qwen3-8B-79.5k-Optimal')
-
-tokenizer = AutoTokenizer.from_pretrained(model_dir)
-model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto")
-
-text = "你好，请用蒙古语翻译以下句子..."
-# ... follow standard inference pipeline
 ```
 
 ---
