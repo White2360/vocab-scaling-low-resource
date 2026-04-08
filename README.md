@@ -24,25 +24,18 @@ We have released all model checkpoints on **ModelScope**, covering different sca
 ### 🔗 [Click here to access the Full Model Collection](https://www.modelscope.cn/collections/lingfeng2360/ACL-2026-Findings-Vocab-Scaling)
 
 ### 📂 Collection Structure & Naming Convention
-The collection includes **100+ checkpoints**. To find the specific model you need, please refer to the following naming pattern:
-`{Architecture}-{Scale}-{Stage}-{Task}`
+The collection is organized by architecture and task. Each model entry contains a complete series of checkpoints spanning all scaling levels (**L1 to L10**).
 
-**Example**: `Qwen3-8B-L7-SFT-MT` refers to the **Qwen3-8B** model at the **L7** (79.5k) vocabulary scale, fine-tuned for **Machine Translation**. Similarly, you can find a series of checkpoints from **L1** to **L10** for each training stage and task.
+**Naming Pattern**: `{Architecture}-{Stage}-{Task}`
+
+**Example**: `Qwen3-8B-SFT-MT` refers to the Qwen3-8B model series fine-tuned for Machine Translation (including all vocabulary scales from **L1 to L10**).
 
 1.  **Architectures**: `Qwen3-8B`, `Qwen2.5-7B`, `Qwen2.5-1.5B`, `Llama2-7B`.
-2.  **Vocabulary Scales**: `L1` (140 tokens) to `L10` (195,000 tokens).
-3.  **Stages & Tasks**:
+2.  **Stages & Tasks**:
     * **`IP`**: Incremental Pre-training (Backbones).
     * **`SFT`**: Supervised Fine-tuning models.
-    * **Tasks**: `MT` (Translation), `TS` (Summarization), `TC` (Classification).
-
-### 📊 Model Series Overview
-
-| Model Type | Stages Available | Scaling Levels | Targeted Languages |
-| :--- | :--- | :--- | :--- |
-| **Qwen3-8B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
-| **Qwen2.5-7B/1.5B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
-| **Llama2-7B** | IP & SFT | L1 ~ L10 | Mongolian, Tibetan, Uyghur |
+    * **Tasks (for SFT)**: `MT` (Machine Translation), `TS` (Summarization), `TC` (Text Classification).
+3.  **Scales (Inside each entry)**: Every repository provides weights for scales **L1** (140 tokens) through **L10** (195,000 tokens).
 
 ---
 
