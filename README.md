@@ -27,18 +27,14 @@ We have released all model checkpoints on **ModelScope**, covering different sca
 The collection includes **100+ checkpoints**. To find the specific model you need, please refer to the following naming pattern:
 `{Architecture}-{Scale}-{Stage}-{Task}`
 
-1.  **Architectures**: 
-    * `Qwen3-8B`, `Qwen2.5-7B`, `Qwen2.5-1.5B` (BBPE-based)
-    * `Llama2-7B` (BPE-based)
-2.  **Vocabulary Scales**: 
-    * `L1` (140 tokens) to `L10` (195,000 tokens). 
-    * We highly recommend the **optimal 79.5k (L7)** configuration for BBPE models.
-3.  **Stages & Tasks**:
-    * **`IP`**: Incremental Pre-training (Backbones with expanded vocabulary).
-    * **`SFT`**: Supervised Fine-tuning models.
-    * **Tasks (for SFT)**: `MT` (Machine Translation), `TS` (Summarization), `TC` (Text Classification).
+**Example**: `Qwen3-8B-L7-SFT-MT` refers to the **Qwen3-8B** model at the **L7** (79.5k) vocabulary scale, fine-tuned for **Machine Translation**. Similarly, you can find a series of checkpoints from **L1** to **L10** for each training stage and task.
 
-**Example**: `Qwen3-8B-79.5k-SFT-MT` refers to the Qwen3-8B model with a 79.5k vocabulary, fine-tuned for Machine Translation.
+1.  **Architectures**: `Qwen3-8B`, `Qwen2.5-7B`, `Qwen2.5-1.5B`, `Llama2-7B`.
+2.  **Vocabulary Scales**: `L1` (140 tokens) to `L10` (195,000 tokens).
+3.  **Stages & Tasks**:
+    * **`IP`**: Incremental Pre-training (Backbones).
+    * **`SFT`**: Supervised Fine-tuning models.
+    * **Tasks**: `MT` (Translation), `TS` (Summarization), `TC` (Classification).
 
 ### 📊 Model Series Overview
 
