@@ -78,11 +78,25 @@ Our trilingual joint expansion strategy (JTE) significantly outperforms independ
 If you find our work or models useful, please cite our paper:
 
 ```bibtex
-@inproceedings{vocab-scaling-acl2026,
-  title={Scaling Laws or Threshold Effects: Exploring the Optimal Vocabulary Size for Balancing Performance and Efficiency in Low-Resource Languages},
-  author={Han,Ao and Chen, Andong and Sun, Yuan and Zhao, Xiaobing},
-  booktitle={Findings of the Association for Computational Linguistics: ACL 2026},
-  year={2026}
+@inproceedings{han-etal-2026-scaling,
+    title = "Scaling Laws or Threshold Effects: Exploring the Optimal Vocabulary Size for Balancing Performance and Efficiency in Low-Resource Languages",
+    author = "Han, Ao  and
+      Chen, Andong  and
+      Sun, Yuan  and
+      Zhao, Xiaobing",
+    editor = "Liakata, Maria  and
+      Moreira, Viviane P.  and
+      Zhang, Jiajun  and
+      Jurgens, David",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {ACL} 2026",
+    month = jul,
+    year = "2026",
+    address = "San Diego, California, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-acl.1588/",
+    pages = "31741--31758",
+    ISBN = "979-8-89176-395-1",
+    abstract = "While vocabulary expansion scaling laws are well-established for high-resource languages, they remain unverified in low-resource settings. This gap is particularly critical for Byte-level BPE (BBPE), where constrained vocabulary sizes often fail to capture the rich morphemes of complex scripts, leading to severe over-segmentation in languages such as Mongolian, Tibetan, and Uyghur. We systematically investigate jointly-scaled trilingual vocabulary for these languages (140 to 195,000 tokens) across BPE (Llama 2) and BBPE (Qwen2.5/3) architectures. Our results reveal that BBPE follows a ``decline-then-rise'' pattern, requiring a 9,000-token threshold (3,000 per language) to trigger non-linear performance gains and inference acceleration, whereas BPE improves monotonically. Using Pareto Frontier Analysis, we identify an optimal 79,500-token configuration for BBPE that reduces continuous pre-training duration by over 71{\%} across 1.5B to 8B parameter models while consistently enhancing downstream performance."
 }
 ```
 
